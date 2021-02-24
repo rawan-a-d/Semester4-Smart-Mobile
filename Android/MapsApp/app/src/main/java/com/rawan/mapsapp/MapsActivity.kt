@@ -1,12 +1,14 @@
 package com.rawan.mapsapp
 
 import android.Manifest
+import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.location.*
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 
@@ -30,10 +32,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // request permission
         requestLocationPermission()
 
         setContentView(R.layout.activity_maps)
-
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -53,22 +56,32 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in current location and move the camera
-        val location = LatLng(userLocation.latitude, userLocation.longitude)
-
         //val address = getAddress(userLocation.latitude, userLocation.longitude)
 
-        mMap.addMarker(MarkerOptions().position(location).title("Current location"))
+        showLocation()
+    }
 
+
+    private fun showLocation() {
+        mMap.clear()
+
+        val location = LatLng(userLocation.latitude, userLocation.longitude)
+
+        // Add a marker in current location and move the camera
+        mMap.addMarker(MarkerOptions().position(location).title("Current location"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }
 
 
     //define the listener
     private val locationListener: LocationListener = object : LocationListener {
+
         override fun onLocationChanged(location: Location) {
+            Log.v(TAG, "IN ON LOCATION CHANGE, lat=" + location.latitude + ", lon=" + location.longitude);
 
             userLocation = location
+
+            showLocation()
         }
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
         override fun onProviderEnabled(provider: String) {}
@@ -93,6 +106,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     // same time, respect the user's decision. Don't link to system
                     // settings in an effort to convince the user to change their
                     // decision.
+                    Toast.makeText(applicationContext,"We can't show your current location" ,Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -133,7 +147,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private fun getAddress(lat: Double, lng: Double): String {
-
         var addresses: List<Address>;
         val geocoder = Geocoder(this, Locale.getDefault());
 
@@ -146,6 +159,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         String postalCode = addresses.get(0).getPostalCode();
         String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL*/
         return address;
-
     }
 }

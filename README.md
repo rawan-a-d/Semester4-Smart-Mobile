@@ -6,6 +6,8 @@ In the Code section in the development branch you will find:
     - Hello world app.
     - Login app and simple greeting.
     - Maps app which shows a map with the user's current location on it after getting permission.
+    - Dicer app which allows a user to throw two dices.
+
 
 In the Wiki section you will find:
 

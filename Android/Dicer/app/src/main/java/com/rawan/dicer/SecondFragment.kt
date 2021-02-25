@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import kotlin.random.Random
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -27,8 +28,8 @@ class SecondFragment : Fragment() {
 
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             // get random numbers
-            val firstRandomNr = (0..5).random() // generated random from 0 to 6 included
-            val secondRandomNr = (0..5).random() // generated random from 0 to 6 included
+            val firstRandomNr = randomDiceValue() // generated random from 0 to 6 included
+            val secondRandomNr = randomDiceValue() // generated random from 0 to 6 included
 
             // get corresponding images
             var firstDiceImage = dicesImages[firstRandomNr]
@@ -38,5 +39,9 @@ class SecondFragment : Fragment() {
             view.findViewById<ImageView>(R.id.firstDice).setImageResource(firstDiceImage)
             view.findViewById<ImageView>(R.id.secondDice).setImageResource(secondDiceImage)
         }
+    }
+
+    private fun randomDiceValue(): Int {
+        return (0..5).random();
     }
 }

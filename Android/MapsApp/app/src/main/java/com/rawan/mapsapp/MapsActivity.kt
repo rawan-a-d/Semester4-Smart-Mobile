@@ -23,7 +23,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
-
+    // Pass userLocation to showLocation
     private lateinit var mMap: GoogleMap
 
     // used to get user's location

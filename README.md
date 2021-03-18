@@ -11,6 +11,7 @@ In the Code section in the development branch you will find:
 
 
 In the Wiki section you will find:
+https://git.fhict.nl/I407847/semester4-smart-mobile/-/wikis/home
 
 1. Pressure Cooker / Pay it forward project, which contains the following:
     - Empathize, Define and Ideate in "Problem definition / Concepting".

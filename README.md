@@ -10,6 +10,7 @@ In the Code section in the development branch you will find:
     - Simple maps app which shows the user's location as text.
 
 
+
 ## Wiki
 https://git.fhict.nl/I407847/semester4-smart-mobile/-/wikis/home
 
@@ -21,6 +22,7 @@ In the Wiki section you will find:
     - Process Document in "Process Document"
     - Peer feedback and Self assessment in "Professional Skills".
     
+
 1. Android / Med Tracker project, which contains the following:
     - Empathize, Define and Ideate in "Problem definition / Concepting".
     - Prototype on adobe xd in "Mobile User Experience / Interaction Design".

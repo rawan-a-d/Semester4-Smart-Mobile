@@ -6,7 +6,7 @@ In the Code section in the development branch you will find:
     - Login app and simple greeting.
     - Maps app which shows a map with the user's current location on it after getting permission.
     - Dicer app which allows a user to throw two dices.
-    - Photo app where a user can take a picture either from the storage or the camera.
+    - Photo app where a user can take a picture using the camera.
 
 
 ## Wiki

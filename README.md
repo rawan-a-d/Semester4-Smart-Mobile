@@ -11,6 +11,7 @@ In the Code section in the development branch you will find:
 
 ## Wiki
 https://git.fhict.nl/I407847/semester4-smart-mobile/-/wikis/home
+
 In the Wiki section you will find:
 
 1. Pressure Cooker / Pay it forward project, which contains the following:

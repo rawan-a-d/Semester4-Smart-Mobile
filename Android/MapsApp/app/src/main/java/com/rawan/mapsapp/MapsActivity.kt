@@ -1,15 +1,18 @@
 package com.rawan.mapsapp
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.app.Service.START_STICKY
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.*
-import android.os.Build
+import android.location.LocationListener
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -20,6 +23,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.*
+// ******************************
 import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -27,14 +33,65 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
 
     // used to get user's location
-    private var locationManager : LocationManager? = null
-    private lateinit var userLocation: Location
+   private lateinit var locationManager : LocationManager
+   private lateinit var userLocation: Location
+
+       private lateinit var locationCallback: LocationCallback
+
+    lateinit var locationRequest: LocationRequest
+    var fusedLocationClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+
+    // NEW
+//    var locationManager: LocationManager? = null
+//
+//    override fun onBind(intent: Intent?) = null
+//
+//    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+//        super.onStartCommand(intent, flags, startId)
+//        return START_STICKY
+//    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // request permission
-        requestLocationPermission()
+        //requestLocationPermission()
+
+
+/*
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                locationResult ?: return
+                for (location in locationResult.locations){
+                    // Update UI with location data
+                    // ...
+                    userLocation = location
+                    showLocation()
+                }
+            }
+        }*/
+
+        val crit : Criteria = Criteria();
+        crit.accuracy = Criteria.ACCURACY_FINE;
+        val provider = locationManager.getBestProvider(crit, false).toString();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+
+        println("crit " + crit)
+        println("provider " + provider)
+        println("locationManager " + locationManager)
+
+        locationManager.requestLocationUpdates(provider, 0, 3f, locationListener);
 
         setContentView(R.layout.activity_maps)
 
@@ -56,6 +113,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
+        //fusedLocationClient =
+
+
         //val address = getAddress(userLocation.latitude, userLocation.longitude)
 
         showLocation()
@@ -65,7 +125,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun showLocation() {
         mMap.clear()
 
+        //val location = LatLng(userLocation.latitude, userLocation.longitude)
         val location = LatLng(userLocation.latitude, userLocation.longitude)
+
+        println("showLocation $location")
 
         // Add a marker in current location and move the camera
         mMap.addMarker(MarkerOptions().position(location).title("Current location"))
@@ -79,6 +142,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         override fun onLocationChanged(location: Location) {
             Log.v(TAG, "IN ON LOCATION CHANGE, lat=" + location.latitude + ", lon=" + location.longitude);
 
+            println("onLocationChanged $location")
             userLocation = location
 
             showLocation()
@@ -133,17 +197,46 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun startLocation() {
         // Create persistent LocationManager reference
-        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
+        //locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
 
         try {
             // Request location updates
-            locationManager?.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, locationListener)
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, locationListener)
 
-            userLocation = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
+            userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
         } catch(ex: SecurityException) {
             Log.d("myTag", "Security Exception, no location available")
         }
     }
+
+/*    override fun onPause() {
+        super.onPause()
+        stopLocationUpdates()
+    }
+
+    private fun stopLocationUpdates() {
+        fusedLocationClient.removeLocationUpdates(locationCallback)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (requestingLocationUpdates) startLocationUpdates()
+    }*/
+
+/*    override fun onResume() {
+        super.onResume()
+        LocationManager.requestLocationUpdates(best, 10000, 1, locationListener);
+    }
+
+    override fun onPause() {
+        super.onPause()
+        fusedLocationClient.requestLocationUpdates(locationRequest,
+                locationCallback,
+                Looper.getMainLooper())
+    }*/
+
+
+
 
 
     private fun getAddress(lat: Double, lng: Double): String {

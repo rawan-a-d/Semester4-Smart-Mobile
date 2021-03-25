@@ -2,12 +2,18 @@ Reading guide:
 
 In the Code section in the development branch you will find:
 1. An android folder which contains:
-    - Hello world app.
-    - Login app and simple greeting.
+    - Hello world app. 
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/Android/HelloWorld)
+    - Login app and simple greeting. 
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/Android/Login)
     - Maps app which shows a map with the user's current location on it after getting permission.
-    - Dicer app which allows a user to throw two dices.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/Android/MapsApp)
+    - Dicer app which allows a user to throw two dices. 
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/Android/Dicer)
     - Photo app where a user can take a picture using the camera.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/Android/PhotoApp)
     - Simple maps app which shows the user's location as text.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/Android/MapsAppSimple)
 
 
 

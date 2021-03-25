@@ -81,7 +81,10 @@ struct ContentView: View {
                 // Total amount of check (original amount + tip)
                 Section(header: Text("Total amount of check")) {
                     Text("$ \(totalAmount, specifier: "%.2f")")
+                        // conditional modifier to change the total amount text view to red if the user selects a 0% tip.
+                        .foregroundColor(tipPercentages[tipPercentage] == 0 ? Color.red : Color.black)
                 }
+                
                 
                 Section(header: Text("Amount per person")) {
                     Text("$ \(totalPerPerson, specifier: "%.2f")") // show only two numbers after comma
@@ -89,7 +92,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("WeSplit")
         }
-    }
+            }
 }
 
 // Display the view in the iPhone

@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+// create a FlagImage() view that renders one flag image using the specific set of modifiers we had.
+struct FlagImage: View {
+    var imageName: String
+    
+    var body: some View {
+        Image(imageName)
+            .renderingMode(.original) // don't recolor as button
+            .clipShape(Capsule()) // change shape
+            .overlay(Capsule().stroke(Color.black, lineWidth: 1)) // add border around the flags
+            .shadow(color: .black, radius: 2) // add shadow
+        
+    }
+}
+
 // https://www.hackingwithswift.com/read/2/overview
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled() // shuffle the array
@@ -43,11 +57,13 @@ struct ContentView: View {
                         // check answer
                         self.flagTapped(number)
                     }) {
-                        Image(self.countries[number])
-                            .renderingMode(.original) // don't recolor as button
-                            .clipShape(Capsule()) // change shape
-                            .overlay(Capsule().stroke(Color.black, lineWidth: 1)) // add border around the flags
-                            .shadow(color: .black, radius: 2) // add shadow
+                    //                        Image(self.countries[number])
+                    //                            .renderingMode(.original) // don't recolor as button
+                    //                            .clipShape(Capsule()) // change shape
+                    //                            .overlay(Capsule().stroke(Color.black, lineWidth: 1)) // add border around the flags
+                    //                            .shadow(color: .black, radius: 2) // add shadow
+                        
+                        FlagImage(imageName: self.countries[number])
                     }
                 }
                 

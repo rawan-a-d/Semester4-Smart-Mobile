@@ -10,7 +10,7 @@ import SwiftUI
 // create a FlagImage() view that renders one flag image using the specific set of modifiers we had.
 struct FlagImage: View {
     var imageName: String
-    
+        
     var body: some View {
         Image(imageName)
             .renderingMode(.original) // don't recolor as button
@@ -33,6 +33,10 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     
     @State private var score = ""
+    
+    // animation
+    @State private var animationAmount = 0.0
+    @State private var animationAmountOpacity: CGFloat = 1
     
     var body: some View {
         ZStack { // add background color
@@ -57,14 +61,16 @@ struct ContentView: View {
                         // check answer
                         self.flagTapped(number)
                     }) {
-                    //                        Image(self.countries[number])
-                    //                            .renderingMode(.original) // don't recolor as button
-                    //                            .clipShape(Capsule()) // change shape
-                    //                            .overlay(Capsule().stroke(Color.black, lineWidth: 1)) // add border around the flags
-                    //                            .shadow(color: .black, radius: 2) // add shadow
-                        
                         FlagImage(imageName: self.countries[number])
                     }
+                    // apply animation to correct answer only
+                    .rotation3DEffect(
+                        .degrees((number == correctAnswer) ?
+                                    animationAmount : 0.0),
+                        axis: (x: 0, y: 1, z: 0))
+                    // make the other two buttons (wrong ones) fade out to 25% opacity
+                    .opacity((number != correctAnswer) ?
+                                Double(animationAmountOpacity) : 1)
                 }
                 
                 Text("Your score is " + score)
@@ -90,6 +96,18 @@ struct ContentView: View {
     // check if answer is correct
     func flagTapped(_ number: Int) {
         if(number == correctAnswer) {
+            
+            // animate
+            withAnimation(
+                .interpolatingSpring(stiffness: 5, damping: 1)
+            ) {
+                animationAmount = 360
+            }
+            
+            withAnimation {
+                animationAmountOpacity = 0.5
+            }
+            
             scoreTitle = "Correct"
             
             // increase score
@@ -113,6 +131,10 @@ struct ContentView: View {
     
     // reset when the alert is dismissed
     func askQuestion() {
+        // reset animation
+        animationAmountOpacity = 1
+        animationAmount = 0
+        
         // shuffle contries
         countries.shuffle()
         // pick new correct answer

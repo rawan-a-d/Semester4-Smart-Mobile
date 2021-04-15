@@ -17,8 +17,10 @@ In the Code section in the development branch you will find:
 
 2. An iOS folder which contains:
     - Fancy Tab Bar.
+
         (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/FancyTabBar)
     - We Split app which helps friends who are doing an activity together such as eating at a restaurant split the cost.
+    
         (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/WeSplit)
     - Guess the Flag app, a guessing game that helps users learn some of the many flags of the world.
         (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/GuessTheFlag)

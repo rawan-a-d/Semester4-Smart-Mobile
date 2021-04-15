@@ -15,6 +15,21 @@ In the Code section in the development branch you will find:
     - Simple maps app which shows the user's location as text.
         (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/Android/MapsAppSimple)
 
+2. An iOS folder which contains:
+    - Fancy Tab Bar.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/FancyTabBar)
+    - We Split app which helps friends who are doing an activity together such as eating at a restaurant split the cost.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/WeSplit)
+    - Guess the Flag app, a guessing game that helps users learn some of the many flags of the world.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/GuessTheFlag)
+    - Better Rest app which uses Machine Learning to help coffee drinkers get a good night’s sleep by asking them a few questions.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/BetterRest)
+    - Word Scramble app, a game which shows players a random eight-letter word, and ask them to make words out of it.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/WordScramble)
+    - iExpense app which is an expense tracker that separates personal costs from business costs.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/iExpense)
+    - Moonshot app which lets users learn about the missions and astronauts that formed NASA’s Apollo space program.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/Moonshot)
 
 
 ## Wiki

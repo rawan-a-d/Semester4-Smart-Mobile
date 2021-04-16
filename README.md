@@ -30,6 +30,8 @@ In the Code section in the development branch you will find:
         (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/iExpense)
     - Moonshot app which lets users learn about the missions and astronauts that formed NASA’s Apollo space program.
         (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/Moonshot)
+    - Camera app where a user can take a picture using the camera or choose a picture from gallery.
+        (https://git.fhict.nl/I407847/semester4-smart-mobile/-/tree/development/IOS/CameraApp)
 
 
 ## Wiki
@@ -44,10 +46,21 @@ In the Wiki section you will find:
     - Peer feedback and Self assessment in "Professional Skills".
     
 
-1. Android / Med Tracker project, which contains the following:
+2. Android / Med Tracker project, which contains the following:
     - Empathize, Define and Ideate in "Problem definition / Concepting".
     - Prototype on adobe xd in "Mobile User Experience / Interaction Design".
     - Process Document in "Process Document".
+    - What I worked on, what I learned and the challengs I faced in "Software".
+    - The hardware I used and worked with in "Hardware".
+    - Peer feedback and Self assessment in "Professional Skills".
+    - Short Video of Our Application.
+
+3. iOS / Co Task project, which contains the following:
+    - Empathize, Define and Ideate in "Problem definition / Concepting".
+    - Prototype on adobe xd in "Mobile User Experience / Interaction Design".
+    - Process Document in "Process Document".
+    - Interaction Design Document in "Interaction Design Document".
+    - Prototype Testing Document in "Prototype Testing Document".
     - What I worked on, what I learned and the challengs I faced in "Software".
     - The hardware I used and worked with in "Hardware".
     - Peer feedback and Self assessment in "Professional Skills".

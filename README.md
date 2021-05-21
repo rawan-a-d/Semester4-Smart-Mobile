@@ -65,3 +65,12 @@ In the Wiki section you will find:
     - The hardware I used and worked with in "Hardware".
     - Peer feedback and Self assessment in "Professional Skills".
     - Short Video of Our Application.
+
+4. PWA / Where to now project, which contains the following:
+    - Inspiration and Ideation in "Problem definition / Concepting".
+    - Prototype on adobe xd in "Mobile User Experience / Interaction Design".
+    - Process Document in "Process Document".
+    - What I worked on, what I learned and the challengs I faced in "Software".
+    - The hardware I used and worked with in "Hardware".
+    - Peer feedback and Self assessment in "Professional Skills".
+    - Short Video of Our Application.
